@@ -1,4 +1,7 @@
 Flask
-Pygal
+Jsonify
+Request
+Sqlite3
+Flask_wtf
+Wtforms
 Datetime
-Requests
