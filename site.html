@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Chart {% endblock %}
+
+{% block content %}
+    <h1>Create Chart</h1>
+    <form method="POST">
+        <label for="stockSymbol">Choose Symbol</label><br>
+        <select name="stockSymbol" id="stockSymbol">
+            <option value="">Select a Symbol</option>
+            {% for stockSymbol in symbol_list %}
+                <option value="{{ stockSymbol }}">{{stockSymbol}}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="chartType">Chart Type: </label><br>
+        <select id="chartType" name="chartType">
+            <option value="1">Bar Graph</option>
+            <option value="2">Line Graph</option>
+        </select><br><br>
+        <label for="start_date">Start Date:</label><br>
+        <input type="date" id="start_date" name="start_date"><br><br>
+        <label for="end_date">End Date:</label><br>
+        <input type="date" id="end_date" name="end_date"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if chart %}
+    <div id="chart">
+        <embed src="{{ chart|safe }}" type="image/svg+xml">
+    </div>
+{% endif %}
+
+{% endblock %}
